@@ -3,7 +3,7 @@
 #include <algorithm>
 
 using namespace std; 
-vector<int> booling(1000);
+int booling[10000];
 class Anyclass{
    
 };
@@ -16,8 +16,9 @@ int main() {
     vector<long> array;
     vector<long> newarray;
     vector<long> general[1001];
-    vector<int> newopion;
+    vector<int> newopion(1001);
     std:: vector<long> op;
+    vector<int> ok(1001);
     long min;
     for(int i = 0; i < x; i++) 
     {
@@ -45,30 +46,33 @@ int main() {
                 newarray.push_back(array[l]);
             }
         }
-        cout <<"array " << endl;
-        for(int j = 0;  j < array.size();  j++)
-        {
-            cout << array[j] << " ";
-        }
-        cout << endl;
-        cout << "booling " << endl;
-        for(int i = 0;  i < array.size();  i++)
-        {
-            cout << booling[array[i]] << " ";
-        }
-        cout << endl;
-        booling.clear();
+      // cout <<"array " << endl;
+      //for(int j = 0;  j < array.size();  j++)
+      //{
+      //     cout << array[j] << " ";
+      //}
+      //cout << endl;
+      //cout << "booling " << endl;
+      //for(int i = 0;  i < array.size();  i++)
+      //{
+      //     cout << booling[array[i]] << " ";
+      //}
+      //cout << endl;
+      //booling.clear();
+        std:: fill(booling,  booling + general[i].size() + 2, 0);
+
         if(newarray.size() == 0) 
         {
 
-                cout << "ZA WARUDO" <<endl; 
+                ok[i] = 0;
                 newarray.clear();
-                booling.clear();
+           //     booling.clear();
                 array.clear();
 
         }
         if(newarray.size() > 0) 
         {
+          ok[i] = i + 1;
 
           sort(newarray.begin(), newarray.end());
           
@@ -76,26 +80,42 @@ int main() {
 
           for(int opions = 0;  opions < array.size();  opions++) 
           {
+              
 
                    if(min == array[opions])
                    {
 
-                      newopion.push_back(opions+1);
+                      newopion[i] = opions + 1;
 
                    }
           }
           newarray.clear();
           array.clear();
-          booling.clear();
+        //  booling.clear();
 
         }
     
       
     }
-    cout << booling.size()  << endl;
-    cout << newarray.size() << endl;
-    for(int i = 0;  i < newopion.size(); i++) {
-        cout << newopion[i] << endl;
+   // cout << endl;
+   // cout << endl;
+   // cout << newopion[0] << endl<< endl<< endl;
+   // cout << ok[0] << endl;
+   // bool  can store 
+   // cout << booling.size()  << endl;
+    for(int i = 0;  i < x; i++) 
+    {
+        if(ok[i] > 0 ) {
+            cout << newopion[i];
+        }
+        if(ok[i] == 0) {
+            cout <<"ZA WARUDO";
+        }
+        if(i + 1 < x) {
+            cout << endl;
+        }
     }
+    
+        
     return 0;
 }
