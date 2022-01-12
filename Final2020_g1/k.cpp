@@ -3,6 +3,9 @@
 #include <cmath> 
 #include <map>
 #include <string>
+#include <algorithm>
+
+
 
 
 using namespace std; 
@@ -12,45 +15,52 @@ int main() {
     int x;
     cin >> x; 
     string name, namechange;
-    vector<pair<string,string >> result;
-    for(int i = 0; i < x; i++) {
+    map<string, string> result;
+    vector<string> key;
+    multimap<string, string>resultkey; 
+    string have;
+    bool ok[1000] = {0};
+    for(int i = 1; i <= x; i++) 
+    {
         cin >> name >> namechange;
-       result.push_back(make_pair(name, namechange ));
-
-    }
-    bool ok = false;
-    string nameatvector;
-    map<string, bool> okay;
-    vector<int>use;
-    cout << endl;
-    vector<pair<string,string>> newvector;
-    for(int i = 0; i < result.size(); i++) {
-        nameatvector = result[i].second;
-        for(int j = 1; j < result.size(); j++) {
-            if(nameatvector == result[j].first) {
-                result[i].second = result[j].first;
-                nameatvector = result[i].second;
-                ok = true;
-                cout <<  nameatvector << endl;
-            }
+     // 1   // Aslan Nurbol 
+     // 2 // Nurbol HackMachine 
+        if(result.find(name) == result.end()) {
+            // Aslan
+            result[namechange] = name;
+            // 1 Nurbol Aslan
+    
         }
-        if(ok == true) {
-            newvector.push_back(make_pair(result[i].first, nameatvector));
-            
+        else{
+            // 
+            result[namechange]  = result[name];
+            result.erase(name);
         }
-        ok = false;
-      //  else  {
-     //   newvector.push_back(make_pair(result[i].first, result[i].second));
-      //  }
     }
     cout << endl;
+    cout << result.size() << endl; 
+  //  vector<pair<string, string> > forsorting; 
+    // sort(result.begin(),  result.end())  // s0  map  is  not sort  because of we create 
+    // new vector  for sort 
+    string newname;
+    string newsurname;
+    multimap<string,string> forsorting;
+    while (result.empty() != 1)
+    {
+       // cout << result.begin()->first << " " <<  result.begin() ->second << endl;
+        
+        newname = result.begin() -> first;
+        newsurname = result.begin() -> second;
+        forsorting.insert(make_pair(newsurname, newname));
+        result.erase(result.begin());
+    }
+    while(forsorting.empty() != 1)
 
-    cout << endl;
-    cout << endl;
-    cout << endl;
+    {     
 
-    for (int i = 0; i < newvector.size(); i++) {
-        cout << newvector[i].first << " "<< newvector[i].second << endl;
+        cout << forsorting.begin()->first << " " << forsorting.begin()->second << endl;
+        forsorting.erase(forsorting.begin());
+
     }
     
    return 0;
