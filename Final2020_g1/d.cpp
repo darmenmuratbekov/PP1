@@ -10,16 +10,16 @@ using namespace std;
 
 
 int main() {
-    int x;
+    long x;
     cin >>  x; 
 
     string name,surname;
 
-    int sizegpa;
+    long int sizegpa; //  changing this the sait accepted our solution
 
     string onegpa;
 
-    double onegpasum;
+    long double onegpasum;  // changing this the sait accepted our solution 
    // vector<double> sum;
 
     double onegpacountF = 0;
@@ -31,14 +31,14 @@ int main() {
     double onegpacountBB = 3.500;
     double onegpacountA = 3.750;
     double onegpacountAA = 4.000;
-    double one;
-    double sum = 0;
-    double sumgeneral = 0;
-    double sumgeneraldivide = 0;
+    long double one; // also this
+    long double sum = 0; //  also this
+    long double sumgeneral = 0; //  also this
+    long double sumgeneraldivide = 0; // also this
     map<string,pair<string, double >> result;
 
-    vector<pair<string, pair <string, float >>> resultvector;
-    vector<pair<float, pair <string, string >>> resultvectortwo;
+    vector<pair<string, pair <string, double >>> resultvector;
+    vector<pair<double, pair <string, string >>> resultvectortwo;
 
     for(int i = 1;  i  <= x; i++) {
         cin >> name >> surname >> sizegpa;
@@ -98,19 +98,18 @@ int main() {
     
     }
 
-    cout << endl;
-    cout << endl; 
-    cout << endl; 
-    cout << endl;
     sort(resultvector.begin(), resultvector.end());
     sort(resultvectortwo.begin(),  resultvectortwo.end());
 
-
+   
     for(int i = 0; i  < resultvectortwo.size(); i++) {
-
+    
       cout <<resultvectortwo[i].second.first <<" "<<resultvectortwo[i].second.second << " ";
-      cout << fixed << setprecision(3) <<  resultvectortwo[i].first<< endl;
-
+      cout << fixed << setprecision(3) <<  resultvectortwo[i].first;
+      if(i  < resultvectortwo.size() - 1)
+      {
+          cout << endl;
+      } 
     }
 
   
